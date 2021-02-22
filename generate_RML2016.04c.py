@@ -6,7 +6,7 @@ import analyze_stats
 from gnuradio import channels, gr, blocks
 import numpy as np
 import numpy.fft, cPickle, gzip
-
+import pickle
 '''
 Generate dataset with dynamic channel model across range of SNRs
 '''
@@ -19,7 +19,7 @@ for snr in snr_vals:
     for alphabet_type in transmitters.keys():
         print alphabet_type
         for i,mod_type in enumerate(transmitters[alphabet_type]):
-            print "running test", i,mod_type
+            print("running test", i,mod_type)
 
             tx_len = int(10e3)
             if mod_type.modname == "QAM64":
@@ -54,13 +54,13 @@ for snr in snr_vals:
                 min_length_mod = mod_type
             output[(mod_type.modname, snr)] = modulated_vector
 
-print "min length mod is %s with %i samples" % (min_length_mod, min_length)
+print("min length mod is %s with %i samples" % (min_length_mod, min_length))
 # trim the beginning and ends, and make all mods have equal number of samples
 start_indx = 100
 fin_indx = min_length-100
 for mod, snr in output:
  output[(mod,snr)] = output[(mod,snr)][start_indx:fin_indx]
 X = timeseries_slicer.slice_timeseries_dict(output, 128, 64, 1000)
-cPickle.dump( X, file("RML2014.04c_dict.dat", "wb" ) )
+pickle.dump( X, file("RML2014.04c_dict.dat", "wb" ) )
 X = np.vstack(X.values())
-cPickle.dump( X, file("RML2016.04c.dat", "wb" ) )
+pickle.dump( X, file("RML2016.04c.dat", "wb" ) )
