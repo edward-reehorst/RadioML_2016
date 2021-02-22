@@ -1,5 +1,7 @@
 # dataset
 Open RadioML Synthetic Benchmark Dataset
 
-Porting the code over to Python 3 
-Making it work without docker
+##Aim 
+
+1) Porting the code over to Python 3 
+2) Making it work without docker
