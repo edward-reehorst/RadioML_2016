@@ -1,6 +1,6 @@
 
 import numpy as np
-import cPickle
+import pickle
 import matplotlib.pyplot as plt
 
 def calc_vec_energy(vec):
@@ -16,7 +16,7 @@ def calc_mod_energies(ds):
         for vec in ds[(modulation, snr)]:
             avg_energy += calc_vec_energy(vec)
         avg_energy /= nvectors
-        print "%s at %i has %i vectors avg energy of %2.1f" % (modulation, snr, nvectors, avg_energy)
+        print("%s at %i has %i vectors avg energy of %2.1f" % (modulation, snr, nvectors, avg_energy))
 
 def calc_mod_bias(ds):
     for modulation, snr in ds:
@@ -28,7 +28,7 @@ def calc_mod_bias(ds):
             avg_bias_im += (np.mean(vec[1]))
         #avg_bias_re /= nvectors
         #avg_bias_im /= nvectors
-        print "%s at %i has %i vectors avg bias of %2.1f + %2.1f j" % (modulation, snr, nvectors, avg_bias_re, avg_bias_im)
+        print("%s at %i has %i vectors avg bias of %2.1f + %2.1f j" % (modulation, snr, nvectors, avg_bias_re, avg_bias_im))
 
 def calc_mod_stddev(ds):
     for modulation, snr in ds:
@@ -37,11 +37,11 @@ def calc_mod_stddev(ds):
         for vec in ds[(modulation, snr)]:
             avg_stddev += np.abs(np.std(vec[0]+1j*vec[1]))
         #avg_stddev /= nvectors
-        print "%s at %i has %i vectors avg stddev of %2.1f" % (modulation, snr, nvectors, avg_stddev)
+        print("%s at %i has %i vectors avg stddev of %2.1f" % (modulation, snr, nvectors, avg_stddev))
 
 def open_ds(location="X_4_dict.dat"):
     f = open(location)
-    ds = cPickle.load(f)
+    ds = pickle.load(f)
     return ds
 
 def main():
