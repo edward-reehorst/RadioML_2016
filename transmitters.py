@@ -3,6 +3,8 @@ import time, math
 from scipy.signal import get_window
 from gnuradio import gr, blocks, digital, analog, filter
 from gnuradio.filter import firdes
+import sys
+sys.path.append("/usr/local/lib/python3/dist-packages")
 import mapper
 sps = 8
 ebw = 0.35
