@@ -4,8 +4,8 @@ Open RadioML Synthetic Benchmark Dataset
 ## Aim 
 
 - [x] Porting the code over to Python 3 
-- [] Making it work without docker
-- [] Making it work with GNURadio 3.6+
+- [ ] Making it work without docker
+- [ ] Making it work with GNURadio 3.6+
 
 
 
