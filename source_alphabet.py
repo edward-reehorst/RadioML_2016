@@ -29,10 +29,8 @@ class source_alphabet(gr.hier_block2):
 
         else:   # "type_continuous"
             gr.hier_block2.__init__(self, "source_alphabet",
-                gr.io_signature(0,0,0),
-               gr.io_signature(1,1,gr.sizeof_float))
-               # gr.io_signature(1,1,))
-            self.src = blocks.wavfile_source("source_material/serial-s01-e01.wav")
+                    gr.io_signature(0,0,0), gr.io_signature(1,1,gr.sizeof_float))
+            self.src = blocks.wavfile_source("source_material/serial-s01-e01.wav")/2
             self.convert2 = blocks.interleaved_short_to_complex()
             self.convert3 = blocks.multiply_const_cc(1.0/65535)
             self.convert = blocks.complex_to_float()

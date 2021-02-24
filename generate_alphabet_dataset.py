@@ -5,8 +5,8 @@ import timeseries_slicer
 from gnuradio import channels, gr, blocks
 #import matplotlib.pyplot as plt
 import numpy as np
-import numpy.fft, cPickle, gzip
-
+import numpy.fft, gzip
+import pickle
 
 apply_channel = True
 
@@ -20,7 +20,7 @@ for alphabet_type in transmitters.keys():
     
 
 
-    print "running test", alphabet_type
+    print("running test", alphabet_type)
     tx_len = int(1000e3)
     src = source_alphabet(alphabet_type, tx_len, True)
     head = blocks.head(blks[alphabet_type]["size"], tx_len)
@@ -28,10 +28,10 @@ for alphabet_type in transmitters.keys():
     tb = gr.top_block()
     tb.connect(src,head,snk)
     tb.run()
-    print "finished: ", len(snk.data())
+    print("finished: ", len(snk.data()))
     output[alphabet_type] = np.array(snk.data(), dtype=np.float32)
 
-print output
+print(output)
 X = timeseries_slicer.slice_timeseries_real_dict(output, 128, 64, 1000)
-cPickle.dump( X, file("alphabet_dict.dat", "wb" ) )
+pickle.dump( X, file("alphabet_dict.dat", "wb" ) )
 
