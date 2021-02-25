@@ -108,15 +108,15 @@ class transmitter_am(gr.hier_block2):
         gr.io_signature(1, 1, gr.sizeof_gr_complex))
         self.rate = 44.1e3/200e3
         #self.rate = 200e3/44.1e3
-        self.interp = filter.fractional_resampler_ff(0.0, self.rate)
+        self.interp = filter.mmse_resampler_ff(0.0, self.rate)
         self.cnv = blocks.float_to_complex()
         self.mul = blocks.multiply_const_cc(1.0)
         self.add = blocks.add_const_cc(1.0)
         self.src = analog.sig_source_c(200e3, analog.GR_SIN_WAVE, 0e3, 1.0)
         #self.src = analog.sig_source_c(200e3, analog.GR_SIN_WAVE, 50e3, 1.0)
         self.mod = blocks.multiply_cc()
-        self.connect( self, self.interp, self.cnv, self.mul, self.add, self.mod, self )
-        self.connect( self.src, (self.mod,1) )
+        self.connect(self, self.interp, self.cnv, self.mul, self.add, self.mod, self)
+        self.connect(self.src, (self.mod, 1))
 
 class transmitter_amssb(gr.hier_block2):
     modname = "AM-SSB"
@@ -126,7 +126,7 @@ class transmitter_amssb(gr.hier_block2):
         gr.io_signature(1, 1, gr.sizeof_gr_complex))
         self.rate = 44.1e3/200e3
         #self.rate = 200e3/44.1e3
-        self.interp = filter.fractional_resampler_ff(0.0, self.rate)
+        self.interp = filter.mmse_resampler_ff(0.0, self.rate)
 #        self.cnv = blocks.float_to_complex()
         self.mul = blocks.multiply_const_ff(1.0)
         self.add = blocks.add_const_ff(1.0)
