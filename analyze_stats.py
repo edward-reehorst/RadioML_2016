@@ -46,11 +46,11 @@ def open_ds(location="X_4_dict.dat"):
 
 def main():
     ds = open_ds()
-    #plt.plot(ds[('BPSK', 12)][25][0][:])
-    #plt.plot(ds[('BPSK', 12)][25][1][:])
-    #plt.show()
-    #calc_mod_energies(ds)
-    #calc_mod_stddev(ds)
+    plt.plot(ds[('BPSK', 12)][25][0][:])
+    plt.plot(ds[('BPSK', 12)][25][1][:])
+    plt.show()
+    calc_mod_energies(ds)
+    calc_mod_stddev(ds)
     calc_mod_bias(ds)
 
 if __name__ == "__main__":

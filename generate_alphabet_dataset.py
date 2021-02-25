@@ -17,9 +17,6 @@ blks={"continuous":{ "size":gr.sizeof_float,
       "discrete"  :{ "size":gr.sizeof_char,
                      "sink":blocks.vector_sink_b }}
 for alphabet_type in transmitters.keys():
-    
-
-
     print("running test", alphabet_type)
     tx_len = int(1000e3)
     src = source_alphabet(alphabet_type, tx_len, True)
@@ -30,7 +27,6 @@ for alphabet_type in transmitters.keys():
     tb.run()
     print("finished: ", len(snk.data()))
     output[alphabet_type] = np.array(snk.data(), dtype=np.float32)
-
 print(output)
 X = timeseries_slicer.slice_timeseries_real_dict(output, 128, 64, 1000)
 pickle.dump( X, file("alphabet_dict.dat", "wb" ) )

@@ -76,4 +76,4 @@ for snr in snr_vals:
                   insufficient_modsnr_vectors = False
 
 print("all done. writing to disk")
-pickle.dump( dataset, file("RML2016.10a_dict.dat", "wb" ) )
+pickle.dump(dataset, file("RML2016.10a_dict.dat", "wb" ))
