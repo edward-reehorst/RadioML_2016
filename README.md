@@ -1,4 +1,4 @@
-# RadioML 2016 a/b dataset generation 
+# RadioML 2016 a/c dataset generation 
 Open RadioML Synthetic Benchmark Dataset
 
 ## Aim 
@@ -6,7 +6,7 @@ Open RadioML Synthetic Benchmark Dataset
 - [x] Porting the code over to Python 3 
 - [x] Making it work without docker
 - [x] Making it work with GNURadio 3.7+
-- [x] Generating both 2016a/b datasets without the deprecated gr-mediatools library
+- [x] Generating both 2016a/c datasets without the deprecated gr-mediatools library
 
 ## Requirements (Needs to be updated)
 https://github.com/myersw12/gr-mapper 
