@@ -22,7 +22,7 @@ def slice_timeseries(x, l=128, d=64, max_k = None):
 
 def slice_timeseries_dict(td, l=128, d=64, max_k = None):
     nd = {}
-    for k,v in td.iteritems():
+    for k,v in td.items():
         nd[k] = slice_timeseries(v,l,d,max_k)
     return nd
 

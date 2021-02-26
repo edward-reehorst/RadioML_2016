@@ -29,5 +29,5 @@ for alphabet_type in transmitters.keys():
     output[alphabet_type] = np.array(snk.data(), dtype=np.float32)
 print(output)
 X = timeseries_slicer.slice_timeseries_real_dict(output, 128, 64, 1000)
-pickle.dump( X, open("alphabet_dict.dat", "wb" ) )
+pickle.dump( X, open("alphabet_dict.dat", "wb"))
 

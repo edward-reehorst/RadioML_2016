@@ -6,6 +6,9 @@ from gnuradio import channels, gr, blocks
 import numpy as np
 import numpy.fft, pickle, gzip
 import random
+import multiprocessing
+from tqdm import tqdm
+from joblib import Parallel, delayed
 
 '''
 Generate dataset with dynamic channel model across range of SNRs
@@ -22,7 +25,10 @@ dataset = {}
 nvecs_per_key = 1000
 vec_length = 128
 snr_vals = range(-20,20,2)
+
 for snr in snr_vals:
+    nvecs_per_key = 1000
+    vec_length = 128
     print("snr is ", snr)
     for alphabet_type in transmitters.keys():
         for i,mod_type in enumerate(transmitters[alphabet_type]):
@@ -76,4 +82,4 @@ for snr in snr_vals:
                   insufficient_modsnr_vectors = False
 
 print("all done. writing to disk")
-pickle.dump(dataset, file("RML2016.10a_dict.dat", "wb" ))
+pickle.dump(dataset, open("datasets/RML2016.10a_dict.dat", "wb"))
