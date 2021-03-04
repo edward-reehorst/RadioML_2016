@@ -1,4 +1,4 @@
 *.pyc
 *.dat
 datasets/
-
+*.swp
