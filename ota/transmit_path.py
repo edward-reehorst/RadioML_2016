@@ -35,10 +35,7 @@ class transmit_path(gr.hier_block2):
         '''
         See below for what options should hold
         '''
-	gr.hier_block2.__init__(self, "transmit_path",
-				gr.io_signature(0,0,0),
-				gr.io_signature(1,1,gr.sizeof_gr_complex))
-        
+        gr.hier_block2.__init__(self, "transmit_path", gr.io_signature(0,0,0), gr.io_signature(1,1,gr.sizeof_gr_complex))
         options = copy.copy(options)    # make a copy so we can destructively modify
 
         self._verbose      = options.verbose
@@ -119,8 +116,8 @@ class transmit_path(gr.hier_block2):
         """
         Prints information about the transmit path
         """
-        print "Tx amplitude     %s"    % (self._tx_amplitude)
-        print "modulation:      %s"    % (self._modulator_class.__name__)
-        print "bitrate:         %sb/s" % (eng_notation.num_to_str(self._bitrate))
-        print "samples/symbol:  %.4f"  % (self.samples_per_symbol())
-        print "Differential:    %s"    % (self.differential())
+        print("Tx amplitude     %s"    % (self._tx_amplitude))
+        print("modulation:      %s"    % (self._modulator_class.__name__))
+        print("bitrate:         %sb/s" % (eng_notation.num_to_str(self._bitrate)))
+        print("samples/symbol:  %.4f"  % (self.samples_per_symbol()))
+        print("Differential:    %s"    % (self.differential()))
