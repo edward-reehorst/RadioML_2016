@@ -165,7 +165,7 @@ class cs_mac(object):
         @param payload: contents of the packet (string)
         """
         if self.verbose:
-            print "Rx: ok = %r  len(payload) = %4d" % (ok, len(payload))
+            print("Rx: ok = %r  len(payload) = %4d" % (ok, len(payload)))
         if ok:
             os.write(self.tun_fd, payload)
 
@@ -185,7 +185,7 @@ class cs_mac(object):
                 break
 
             if self.verbose:
-                print "Tx: len(payload) = %4d" % (len(payload),)
+                print("Tx: len(payload) = %4d" % (len(payload),))
 
             delay = min_delay
             while self.tb.carrier_sensed():
@@ -246,7 +246,7 @@ def main():
         realtime = True
     else:
         realtime = False
-        print "Note: failed to enable realtime scheduling"
+        print("Note: failed to enable realtime scheduling")
 
     # instantiate the MAC
     mac = cs_mac(tun_fd, verbose=True)
@@ -260,26 +260,27 @@ def main():
     mac.set_top_block(tb)    # give the MAC a handle for the PHY
 
     if tb.txpath.bitrate() != tb.rxpath.bitrate():
-        print "WARNING: Transmit bitrate = %sb/sec, Receive bitrate = %sb/sec" % (
-            eng_notation.num_to_str(tb.txpath.bitrate()),
-            eng_notation.num_to_str(tb.rxpath.bitrate()))
+       pass
+       # print("WARNING: Transmit bitrate = %sb/sec, Receive bitrate = %sb/sec" % (
+        #    eng_notation.num_to_str(tb.txpath.bitrate()),
+        #    eng_notation.num_to_str(tb.rxpath.bitrate())))
              
-    print "modulation:     %s"   % (options.modulation,)
-    print "freq:           %s"      % (eng_notation.num_to_str(options.tx_freq))
-    print "bitrate:        %sb/sec" % (eng_notation.num_to_str(tb.txpath.bitrate()),)
-    print "samples/symbol: %3d" % (tb.txpath.samples_per_symbol(),)
+    print("modulation:     %s"   %(options.modulation,))
+    print("freq:           %s"      % (eng_notation.num_to_str(options.tx_freq)))
+    print("bitrate:        %sb/sec" % (eng_notation.num_to_str(tb.txpath.bitrate()),))
+    print("samples/symbol: %3d" % (tb.txpath.samples_per_symbol(),))
 
     tb.rxpath.set_carrier_threshold(options.carrier_threshold)
-    print "Carrier sense threshold:", options.carrier_threshold, "dB"
+    print("Carrier sense threshold:", options.carrier_threshold, "dB")
     
-    print
-    print "Allocated virtual ethernet interface: %s" % (tun_ifname,)
-    print "You must now use ifconfig to set its IP address. E.g.,"
-    print
-    print "  $ sudo ifconfig %s 192.168.200.1" % (tun_ifname,)
-    print
-    print "Be sure to use a different address in the same subnet for each machine."
-    print
+    print()
+    print("Allocated virtual ethernet interface: %s" % (tun_ifname,))
+    print("You must now use ifconfig to set its IP address. E.g.,")
+    print()
+    print("  $ sudo ifconfig %s 192.168.200.1" % (tun_ifname,))
+    print()
+    print("Be sure to use a different address in the same subnet for each machine.")
+    print()
 
 
     tb.start()    # Start executing the flow graph (runs in separate threads)
