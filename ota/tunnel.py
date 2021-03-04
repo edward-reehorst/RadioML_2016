@@ -76,8 +76,8 @@ def open_tun_interface(tun_device_filename):
     TUNSETIFF = 0x400454ca
 
     tun = os.open(tun_device_filename, os.O_RDWR)
-    ifs = ioctl(tun, TUNSETIFF, struct.pack("16sH", "gr%d", mode))
-    ifname = ifs[:16].strip("\x00")
+    ifs = ioctl(tun, TUNSETIFF, struct.pack("16sH", b'tun%d', mode))
+    ifname = ifs.decode('UTF-8')[:16].strip("\x00")
     return (tun, ifname)
     
 
