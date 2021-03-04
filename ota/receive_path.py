@@ -143,8 +143,8 @@ class receive_path(gr.hier_block2):
         """
         Prints information about the receive path
         """
-        print "\nReceive Path:"
-        print "modulation:      %s"    % (self._demod_class.__name__)
-        print "bitrate:         %sb/s" % (eng_notation.num_to_str(self._bitrate))
-        print "samples/symbol:  %.4f"    % (self.samples_per_symbol())
-        print "Differential:    %s"    % (self.differential())
+        print("\nReceive Path:")
+        print("modulation:      %s"    % (self._demod_class.__name__))
+        print("bitrate:         %sb/s" % (eng_notation.num_to_str(self._bitrate)))
+        print("samples/symbol:  %.4f"    % (self.samples_per_symbol()))
+        print("Differential:    %s"    % (self.differential()))
