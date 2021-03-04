@@ -81,8 +81,7 @@ class receive_path(gr.hier_block2):
             self._print_verbage()
 
 	# connect block input to channel filter
-	self.connect(self, self.channel_filter)
-
+        self.connect(self, self.channel_filter)
         # connect the channel input filter to the carrier power detector
         self.connect(self.channel_filter, self.probe)
 
