@@ -100,9 +100,9 @@ class uhd_interface:
             # if no gain was specified, use the mid-point in dB
             g = self.u.get_gain_range()
             gain = float(g.start()+g.stop())/2
-            print "\nNo gain specified."
-            print "Setting gain to %f (from [%f, %f])" % \
-                (gain, g.start(), g.stop())
+            print("\nNo gain specified.")
+            print("Setting gain to %f (from [%f, %f])" % \
+                (gain, g.start(), g.stop()))
         
         self.u.set_gain(gain, 0)
         return gain
