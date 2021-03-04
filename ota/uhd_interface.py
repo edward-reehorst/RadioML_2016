@@ -81,14 +81,14 @@ class uhd_interface:
                 break
         
         if(sps != req_sps):
-            print "\nSymbol Rate:         %f" % (sym_rate)
-            print "Requested sps:       %f" % (start_sps)
-            print "Given sample rate:   %f" % (actual_samp_rate)
-            print "Actual sps for rate: %f" % (actual_sps)
+            print("\nSymbol Rate:         %f" % (sym_rate))
+            print("Requested sps:       %f" % (start_sps))
+            print("Given sample rate:   %f" % (actual_samp_rate))
+            print("Actual sps for rate: %f" % (actual_sps))
 
         if(actual_samp_rate != asked_samp_rate):
-            print "\nRequested sample rate: %f" % (asked_samp_rate)
-            print "Actual sample rate: %f" % (actual_samp_rate)
+            print("\nRequested sample rate: %f" % (asked_samp_rate))
+            print("Actual sample rate: %f" % (actual_samp_rate))
 
         return (actual_samp_rate, actual_sps)
 
@@ -128,9 +128,7 @@ class uhd_interface:
 class uhd_transmitter(uhd_interface, gr.hier_block2):
     def __init__(self, args, sym_rate, sps, freq=None, gain=None,
                  spec=None, antenna=None, verbose=False):
-        gr.hier_block2.__init__(self, "uhd_transmitter",
-                                gr.io_signature(1,1,gr.sizeof_gr_complex),
-                                gr.io_signature(0,0,0))
+        gr.hier_block2.__init__(self, "uhd_transmitter", gr.io_signature(1,1,gr.sizeof_gr_complex), gr.io_signature(0,0,0))
 
         # Set up the UHD interface as a transmitter
         uhd_interface.__init__(self, True, args, sym_rate, sps,
@@ -163,13 +161,13 @@ class uhd_transmitter(uhd_interface, gr.hier_block2):
         """
         Prints information about the UHD transmitter
         """
-        print "\nUHD Transmitter:"
-        print "Args:     %s"    % (self._args)
-        print "Freq:        %sHz"  % (eng_notation.num_to_str(self._freq))
-        print "Gain:        %f dB" % (self._gain)
-        print "Sample Rate: %ssps" % (eng_notation.num_to_str(self._rate))
-        print "Antenna:     %s"    % (self._ant)
-        print "Subdev Sec:  %s"    % (self._spec)
+        print("\nUHD Transmitter:")
+        print("Args:     %s"    % (self._args))
+        print("Freq:        %sHz"  % (eng_notation.num_to_str(self._freq)))
+        print("Gain:        %f dB" % (self._gain))
+        print("Sample Rate: %ssps" % (eng_notation.num_to_str(self._rate)))
+        print("Antenna:     %s"    % (self._ant))
+        print("Subdev Sec:  %s"    % (self._spec))
 
 
 #-------------------------------------------------------------------#
@@ -216,10 +214,10 @@ class uhd_receiver(uhd_interface, gr.hier_block2):
         """
         Prints information about the UHD transmitter
         """
-        print "\nUHD Receiver:"
-        print "UHD Args:    %s"    % (self._args)
-        print "Freq:        %sHz"  % (eng_notation.num_to_str(self._freq))
-        print "Gain:        %f dB" % (self._gain)
-        print "Sample Rate: %ssps" % (eng_notation.num_to_str(self._rate))
-        print "Antenna:     %s"    % (self._ant)
-        print "Spec:        %s"    % (self._spec)
+        print("\nUHD Receiver:"
+        print("UHD Args:    %s"    % (self._args))
+        print("Freq:        %sHz"  % (eng_notation.num_to_str(self._freq)))
+        print("Gain:        %f dB" % (self._gain))
+        print("Sample Rate: %ssps" % (eng_notation.num_to_str(self._rate)))
+        print("Antenna:     %s"    % (self._ant))
+        print("Spec:        %s"    % (self._spec))
