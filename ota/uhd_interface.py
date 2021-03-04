@@ -214,7 +214,7 @@ class uhd_receiver(uhd_interface, gr.hier_block2):
         """
         Prints information about the UHD transmitter
         """
-        print("\nUHD Receiver:"
+        print("\nUHD Receiver:")
         print("UHD Args:    %s"    % (self._args))
         print("Freq:        %sHz"  % (eng_notation.num_to_str(self._freq)))
         print("Gain:        %f dB" % (self._gain))
