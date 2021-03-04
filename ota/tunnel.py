@@ -208,7 +208,7 @@ def main():
 
     parser = OptionParser (option_class=eng_option, conflict_handler="resolve")
     expert_grp = parser.add_option_group("Expert")
-    parser.add_option("-m", "--modulation", type="choice", choices=mods.keys(),
+    parser.add_option("-m", "--modulation", type="choice", choices=list(mods.keys()),
                       default='gmsk',
                       help="Select modulation from: %s [default=%%default]"
                             % (', '.join(mods.keys()),))
