@@ -1,5 +1,6 @@
 *.pyc
 *.dat
-*.wav
 datasets/
 *.swp
+*/.ipynb_checkpoints/*
+*long_way.wav

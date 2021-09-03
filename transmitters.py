@@ -165,7 +165,7 @@ class transmitter_am(gr.hier_block2):
         gr.io_signature(1, 1, gr.sizeof_float),
         gr.io_signature(1, 1, gr.sizeof_gr_complex))
         self.rate = 44.1e3/200e3
-        #self.rate = 200e3/44.1e3
+        # self.rate = 200e3/44.1e3
         self.interp = filter.mmse_resampler_ff(0.0, self.rate)
         self.cnv = blocks.float_to_complex()
         self.mul = blocks.multiply_const_cc(1.0)
@@ -203,5 +203,5 @@ class transmitter_amssb(gr.hier_block2):
 
 transmitters = {
         "discrete":[transmitter_bpsk, transmitter_qpsk, transmitter_8psk, transmitter_qam16, transmitter_qam64, transmitter_gfsk, transmitter_cpfsk],
-        # "continuous":[transmitter_fm, transmitter_am, transmitter_amssb]
+        "continuous":[transmitter_fm, transmitter_am, transmitter_amssb]
     }

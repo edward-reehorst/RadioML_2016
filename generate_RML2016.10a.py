@@ -11,7 +11,7 @@ import random
 Generate dataset with dynamic channel model across range of SNRs
 '''
 
-apply_channel = True
+apply_channel = False
 thermal_noise = False
 
 dataset = {}
@@ -20,7 +20,13 @@ dataset = {}
 # {('mod type', SNR): np.array(nvecs_per_key, 2, vec_length), etc}
 
 # CIFAR-10 has 6000 samples/class. CIFAR-100 has 600. Somewhere in there seems like right order of magnitude
-nvecs_per_key = 1_000 if thermal_noise and apply_channel else 20_000
+if apply_channel:
+    if thermal_noise:
+        nvecs_per_key = 1_000
+    else:
+        nvecs_per_key = 20_000
+else:
+    nvecs_per_key = 100 # debug mode
 vec_length = 1024
 if thermal_noise:
     snr_vals = range(-20,20,2)

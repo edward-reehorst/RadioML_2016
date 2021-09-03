@@ -1,12 +1,22 @@
-# RadioML 2016 a dataset generation 
-Open RadioML Synthetic Benchmark Dataset
+# RadioML 2016
+Fork of [adeeb10abbas/RadioML_2016](https://github.com/adeeb10abbas/RadioML_2016), which is a fork of [radioML/dataset](https://github.com/radioML/dataset) 
+## Goal
+Remove dependencies on gr-mapper and gr-mediatools
 
-## Aim 
+## Dependencies
+* python
+* gnuradio
+* numpy
+* scipy
 
-- [x] Porting the code over to Python 3 
-- [x] Making it work without docker
-- [x] Making it work with GNURadio 3.7+
-- [x] Generating the 2016a dataset without the deprecated gr-mediatools library
+## Setup
+`conda create -n gnuradio python numpy scipy`
+`conda activate gnuradio`
+`conda install gnuradio -c conda-forge`
 
-## Requirements (Needs to be updated)
-https://github.com/myersw12/gr-mapper 
+## Changes
+* We are using wavfile source instead of gr-mediatools.
+* We are using built in modulations instead of gr-mapper
+* Chnage analog source from serial podcast (which has a lot of silence) to public domain recording of The Star Spangled Banner (which was editted to remove silence at the beginning of the recording).
+* Add option to turn off AWGN
+
