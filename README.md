@@ -20,6 +20,20 @@ Remove dependencies on gr-mapper and gr-mediatools
 
 `conda install numpy scipy gnuradio=3.8`
 
+## Create Dataset
+First, create an output folder
+
+`mkdir datasets`
+
+There are two constants in `generate_RML2016.10a.py`:
+* `apply_channel` - whether or not to model the dynamic transmission channel
+* `thermal_noise` - whether or not to model AWGN at the receiver
+Set these parameters to your preference.
+
+Then run:
+
+`python generate_RML2016.10a.py`
+
 ## Changes
 * We are using wavfile source instead of gr-mediatools.
 * We are using built in modulations instead of gr-mapper
