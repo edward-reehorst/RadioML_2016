@@ -11,9 +11,13 @@ Remove dependencies on gr-mapper and gr-mediatools
 
 ## Setup
 `conda create -n gnuradio`
+
 `conda activate gnuradio`
+
 `conda config --env --add channels conda-forge`
+
 `conda config --env --set channel_priority strict`
+
 `conda install numpy scipy gnuradio=3.8`
 
 ## Changes
